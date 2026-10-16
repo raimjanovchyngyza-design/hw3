@@ -3,27 +3,31 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-//        System.out.print("enter ur num");
 //--------------------------------------------------------------------- 7 tusks:
+//        System.out.print("enter ur num");
 //        int num2 = scanner.nextInt();
 //        while (num2 <= 1000) {
 //            System.out.println(num2);
 //            num2 *= 10;
 //        }
 //-----------------------------------------------------------------------
+//        System.out.print("enter ur num");
 //        for (int n2 = scanner.nextInt() ; n2 < 1000 ; n2 *= 10)
 //            System.out.println(n2);
 //-----------------------------------------------------------------------
+//        System.out.print("enter ur num");
 //        for (int fr2 = scanner.nextInt() ; fr2 < 1001; fr2 += 1)
 //            System.out.println(fr2);
 //-----------------------------------------------------------------------
-//    z    int rr = scanner.nextInt();
+//        System.out.print("enter ur num");
+//        int rr = scanner.nextInt();
 //        int r = 1;
 //        System.out.println("1");
 //          while (r < rr) {
 //              r += 1;
 //              System.out.println(r);
 //-------------------------------------------------------------------------
+//        System.out.print("enter ur num");
 //        int w = 1;
 //        int ww = scanner.nextInt();
 //        do {
@@ -31,6 +35,7 @@ public class Main {
 //        System.out.println(w);
 //          }while (ww > w);
 //-------------------------------------------------------------------------
+//        System.out.print("enter ur num");
 //        int xx = scanner.nextInt();
 //        int x = 0;
 //        do {
@@ -38,6 +43,7 @@ public class Main {
 //            System.out.println(x);
 //        }while (x < xx);
 //---------------------------------------------------------------------------
+//        System.out.print("enter ur num");
 //        int zz = scanner.nextInt();
 //        int z = 1;
 //        while (z < zz) {
@@ -126,5 +132,73 @@ public class Main {
 //        System.out.println("Zeros: " + zeros);
 //        System.out.println("Even numbers: " + even);
 //        System.out.println("Odd numbers: " + odd);
+//        _-----------------------------------------------
+        final int CrrPin = 1234;
+        final int MaxAtt = 3;
+        int attemptsLeft = MaxAtt;
+        double balance = 1000.0;
+        boolean loggedIn = false;
+        System.out.println("-------- SIMPLE ATM -------");
+        while (attemptsLeft > 0) {
+            System.out.print("Enter your PIN: ");
+            int pin = scanner.nextInt();
+            if (pin == CrrPin) {
+                System.out.println("Login successful");
+                loggedIn = true;
+                break;
+            }
+            attemptsLeft--;
+            System.out.println("Incorrect PIN.");
+            System.out.println("Remaining attempts: " + attemptsLeft);
+            System.out.println();
+        }
+        if (!loggedIn) {
+            System.out.println("Your account has been blocked.");
+            scanner.close();
+            return;
+        }
+        int choice = 0;
+        while (choice != 4) {
+            System.out.println();
+            System.out.println("===== ATM MENU =====");
+            System.out.println("1. Check balance");
+            System.out.println("2. Deposit money");
+            System.out.println("3. Withdraw money");
+            System.out.println("4. Exit");
+            System.out.print("Choose an option: ");
+            choice = scanner.nextInt();
+            if (choice == 1) {
+                System.out.println("Current balance: " + balance);
+            } else if (choice == 2) {
+                System.out.print("Enter deposit amount: ");
+                double amount = scanner.nextDouble();
+                if (amount > 0) {
+                    balance += amount;
+                    System.out.println("Updated balance: " + balance);
+                } else {
+                    System.out.println("Invalid amount.");
+                    System.out.println("Current balance: " + balance);
+                }
+            } else if (choice == 3) {
+                System.out.print("Enter withdrawal amount: ");
+                double amount = scanner.nextDouble();
+                if (amount > 0 && amount <= balance) {
+                    balance -= amount;
+                    System.out.println("Updated balance: " + balance);
+                } else {
+                    System.out.println("Invalid amount.");
+                    System.out.println("Current balance: " + balance);
+                }
+            } else if (choice == 4) {
+                System.out.println("Goodbye!");
+            } else {
+                System.out.println("Invalid option. Try again.");
+            }
+        }
+
+
+
+
+
     }
 }
